@@ -1,5 +1,4 @@
 body {
-    /*border: 2px solid #000000;*/
     width: auto;
     margin-left: auto;
     margin-right: auto;
@@ -12,33 +11,24 @@ body {
 }
 div.header {
     display: table-row;
-    /*float: left;
-    clear: both;
-    width: 100%;*/
     background-color: #cccccc;
     padding: 0.7em;
 }
 div.menubar {
     display: table-row;
-    /*float: left;
-    clear: both;
-    width: 100%;*/
     background-color: #000000;
 }
 div.content {
     display: table-row;
-    /*float: left;
-    clear: both;
-    width: 100%;*/
     padding-top: 1em;
     background-color: #ffffff;
 }
 div.footer {
-    display: table-row;
-    /*float: left;
-    clear: both;
-    width: 100%;*/
+    display: table-cell;
     text-align: center;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-size: 0.8em;
     background-color: #f0f0f0;
 }
 
@@ -80,6 +70,8 @@ div#progress {
     float: left;
     margin-top: 1em;
     margin-right: 1em;
+    padding-left: 0.2em;
+    padding-right: 0.2em;
     background-color: #f0f0ff;
 }
 
@@ -111,4 +103,8 @@ div#feelings div.input select,input {
 
 div#progress h2 {
     margin-top: 0;
+}
+
+p {
+    font-weight: bold;
 }
