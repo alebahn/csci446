@@ -1,5 +1,6 @@
 body {
     /*border: 2px solid #000000;*/
+    width: 90%;
     border-width: 1px;
     border-style: solid;
     font-family: sans-serif;
@@ -46,9 +47,11 @@ div.header h2{
 }
 
 div.menubar a{
+    display: inline-block;
     color: #ffffff;
     text-decoration: none;
     font-weight: bold;
+    margin: 0.5em 1em;
 }
 
 form#feelings {
