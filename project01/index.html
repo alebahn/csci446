@@ -20,23 +20,28 @@
             <a href="evil.html">Evil</a>
         </div>
         <div class="content">
-            <form id="feelings">
+            <div id="feelings">
                 <h2>Lorem Ipsum Dolar Sit Amet.</h2>
-                <div class="input"><p class="label">How do you feel today?</p><input type="text"/></div>
-                <div class="input">
-                    <div class="label">
-                        <p>How would you like to feel?</p>
-                        <p>(choose all that apply)</p>
+                <form id="feelings">
+                    <div class="input"><p class="label">How do you feel today?</p><input type="text"/></div>
+                    <div class="input">
+                        <div class="label">
+                            <p>How would you like to feel?</p>
+                            <p>(choose all that apply)</p>
+                        </div>
+                        <select multiple>
+                            <option value="numb">Comfortably numb</option>
+                            <option value="grumpy">Grumpy as poop, you jerk</option>
+                            <option value="happy">Happy like I'm on controlled substances</option>
+                            <option value="normal">Normal. Absolutely Normal.</option>
+                        </select>
                     </div>
-                    <select multiple>
-                        <option value="numb">Comfortably numb</option>
-                        <option value="grumpy">Grumpy as poop, you jerk</option>
-                        <option value="happy">Happy like I'm on controlled substances</option>
-                        <option value="normal">Normal. Absolutely Normal.</option>
-                    </select>
-                </div>
-                <input type="submit" value="Feel me!"/>
-            </form>
+                    <div class="input">
+                        <div class="label"><!--don't like this hack, couln't think of better idea--></div>
+                        <input type="submit" value="Feel me!"/>
+                    </div>
+                </form>
+            </div>
             <div id="progress">
                 <h2>Current Progress in Life</h3>
                 <p>Mediocre. You really should enjoy life more</p>

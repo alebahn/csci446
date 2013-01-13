@@ -24,6 +24,7 @@ div.content {
     float: left;
     clear: both;
     width: 100%;
+    padding-top: 1em;
     background-color: #ffffff;
 }
 div.footer {
@@ -38,12 +39,14 @@ div.header h1{
     margin-top: 0;
     margin-bottom: 0;
     font-weight: bold;
+    letter-spacing: -3px;
+    font-size: 2.3em;
 }
 div.header h2{
     margin-top: 0;
     margin-bottom: 0;
     color: #666666;
-    font-size: 0.9em;
+    font-size: 0.8em;
 }
 
 div.menubar a{
@@ -54,31 +57,40 @@ div.menubar a{
     margin: 0.5em 1em;
 }
 
-form#feelings {
+div#feelings {
     float: left;
-    margin-right: 5em;
+    margin-right: 7em;
 }
 div#progress {
     float: left;
     background-color: #f0f0ff;
 }
 
-form#feelings div.input {
-    float: left;
-    clear: both;
-    margin-bottom: 1em;
-}
-form#feelings div.input .label {
-    float: left;
-}
-form#feelings p {
+div#feelings h2 {
     margin-top: 0;
     margin-bottom: 0;
 }
-form#feelings div.input select {
-    float: right;
+div#feelings form{
+    display: table;
+    border-spacing: 0.5em 1.5em;
+}
+div#feelings div.input {
+    display: table-row;
+}
+div#feelings div.input .label {
+    display: table-cell;
+}
+div#feelings p {
+    display: block;
+    vertical-align: text-top;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+div#feelings div.input select,input {
+    display: table-cell;
+    vertical-align: text-top;
 }
 
-div#progress h1 {
+div#progress h2 {
     margin-top: 0;
 }
