@@ -1,0 +1,15 @@
+body {
+    background-color: #ffffff;
+}
+div.header {
+    background-color: #cccccc;
+}
+div.menubar {
+    background-color: #000000;
+}
+div.content {
+    background-color: #ffffff;
+}
+div.footer {
+    background-color: #f0f0f0;
+}
