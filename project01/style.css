@@ -36,4 +36,5 @@ form#feelings {
 }
 div#progress {
     float: left;
+    background-color: #f0f0ff;
 }
