@@ -2,6 +2,7 @@ body {
     /*border: 2px solid #000000;*/
     border-width: 1px;
     border-style: solid;
+    font-family: sans-serif;
     border-color: #000000;
     background-color: #aaaaaa;
 }
@@ -10,6 +11,7 @@ div.header {
     clear: both;
     width: 100%;
     background-color: #cccccc;
+    padding: 0.7em;
 }
 div.menubar {
     float: left;
@@ -31,6 +33,24 @@ div.footer {
     background-color: #f0f0f0;
 }
 
+div.header h1{
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: bold;
+}
+div.header h2{
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #666666;
+    font-size: 0.9em;
+}
+
+div.menubar a{
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
 form#feelings {
     float: left;
 }
@@ -45,6 +65,10 @@ form#feelings div.input {
 }
 form#feelings div.input .label {
     float: left;
+}
+form#feelings p {
+    margin-top: 0;
+    margin-bottom: 0;
 }
 form#feelings div.input select {
     float: right;
