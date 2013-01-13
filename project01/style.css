@@ -1,15 +1,27 @@
 body {
-    background-color: #ffffff;
+    background-color: #aaaaaa;
 }
 div.header {
+    float: left;
+    clear: both;
+    width: 100%;
     background-color: #cccccc;
 }
 div.menubar {
+    float: left;
+    clear: both;
+    width: 100%;
     background-color: #000000;
 }
 div.content {
+    float: left;
+    clear: both;
+    width: 100%;
     background-color: #ffffff;
 }
 div.footer {
+    float: left;
+    clear: both;
+    width: 100%;
     background-color: #f0f0f0;
 }
