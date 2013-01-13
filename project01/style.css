@@ -38,3 +38,14 @@ div#progress {
     float: left;
     background-color: #f0f0ff;
 }
+
+form#feelings div.input {
+    float: left;
+    clear: both;
+}
+form#feelings div.input .label {
+    float: left;
+}
+form#feelings div.input select {
+    float: right;
+}
