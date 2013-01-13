@@ -1,4 +1,8 @@
 body {
+    /*border: 2px solid #000000;*/
+    border-width: 1px;
+    border-style: solid;
+    border-color: #000000;
     background-color: #aaaaaa;
 }
 div.header {
