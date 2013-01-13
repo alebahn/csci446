@@ -49,12 +49,16 @@ div.header h2{
     font-size: 0.8em;
 }
 
-div.menubar a{
+div.menubar a:link,a:visited{
     display: inline-block;
     color: #ffffff;
     text-decoration: none;
     font-weight: bold;
     margin: 0.5em 1em;
+}
+
+div.menubar a:hover{
+    color: #666666;
 }
 
 div#feelings {
