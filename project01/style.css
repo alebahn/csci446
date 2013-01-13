@@ -27,5 +27,13 @@ div.footer {
     float: left;
     clear: both;
     width: 100%;
+    text-align: center;
     background-color: #f0f0f0;
+}
+
+form#feelings {
+    float: left;
+}
+div#progress {
+    float: left;
 }
