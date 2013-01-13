@@ -53,6 +53,7 @@ div.menubar a{
 
 form#feelings {
     float: left;
+    margin-right: 5em;
 }
 div#progress {
     float: left;
@@ -62,6 +63,7 @@ div#progress {
 form#feelings div.input {
     float: left;
     clear: both;
+    margin-bottom: 1em;
 }
 form#feelings div.input .label {
     float: left;
@@ -72,4 +74,8 @@ form#feelings p {
 }
 form#feelings div.input select {
     float: right;
+}
+
+div#progress h1 {
+    margin-top: 0;
 }
