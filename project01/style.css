@@ -72,7 +72,7 @@ div#feelings h2 {
 }
 div#feelings form{
     display: table;
-    border-spacing: 0.5em 1.5em;
+    border-spacing: 0.5em 1em;
 }
 div#feelings div.input {
     display: table-row;
