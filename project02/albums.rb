@@ -8,8 +8,8 @@ hello_world = Proc.new do |env|
     make_form()
   when "/list"
     make_table(env)
-  when "/shutdown"
-    exit!
+  when "/style.css"
+    get_css()
   else
     make_404()
   end
@@ -54,7 +54,7 @@ def make_table(env)
 
       list_out << "<table>" << line_end
       list.each do |row|
-        list_out << (row[0]==highlight ? '<tr class="hightlight">' : "<tr>")
+        list_out << (row[0]==highlight ? '<tr class="highlight">' : "<tr>")
         row.each { |value| list_out << "<td>#{value}</td>" }
         list_out << "</tr>" << line_end
       end
@@ -67,6 +67,10 @@ end
 
 def parse_query_string(string)
   Hash[string.split("&").collect { |element| element.split("=") }]
+end
+
+def get_css()
+  [200, {"Content-Type" => "text/css"}, File.new("style.css","r")]
 end
 
 def make_404()
