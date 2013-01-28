@@ -25,9 +25,7 @@ def make_form(env)
     unless line.include? '#'
       form_out << line
     else
-      (1..100).each do |num|
-        form_out << line.gsub(/#/, num.to_s)
-      end
+      (1..100).each { |num| form_out << line.gsub(/#/, num.to_s) }
     end
   end
   [200, {"Content-Type" => "text/html"}, form_out]
