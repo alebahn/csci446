@@ -5,6 +5,8 @@ hello_world = Proc.new do |env|
   case env["REQUEST_PATH"]
   when "/"
     [200, {"Content-Type" => "text/plain"}, ["Hello from Rack!"]]
+  when "/shutdown"
+    exit!
   else
     [404, {"Content-Type" => "text/plain"}, ["Page Not Found."]]
   end
