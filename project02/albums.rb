@@ -19,7 +19,18 @@ def make_hello()
 end
 
 def make_form(env)
-  [200, {"Content-Type" => "text/html"}, File.new("form.html","r")]
+  form_in = File.new("form.html","r")
+  form_out = []
+  form_in.each do |line|
+    unless line.include? '#'
+      form_out << line
+    else
+      (1..100).each do |num|
+        form_out << line.gsub(/#/, num.to_s)
+      end
+    end
+  end
+  [200, {"Content-Type" => "text/html"}, form_out]
 end
 
 def make_404()
