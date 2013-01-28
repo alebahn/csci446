@@ -1,9 +1,7 @@
 require 'rack'
 
-class HelloWorld
-  def call(env)
-    [200, {"Content-Type" => "text/plain"}, ["Hello from Rack!"]]
-  end
+hello_world = Proc.new do |env|
+  [200, {"Content-Type" => "text/plain"}, ["Hello from Rack!"]]
 end
 
-Rack::Handler::WEBrick.run HelloWorld.new, :Port => 8080
+Rack::Handler::WEBrick.run hello_world, :Port => 8080
