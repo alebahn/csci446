@@ -6,7 +6,9 @@ hello_world = Proc.new do |env|
   when "/"
     make_hello()
   when "/form"
-    make_form(env)
+    make_form()
+  when "/list"
+    make_table(env)
   when "/shutdown"
     exit!
   else
@@ -18,7 +20,7 @@ def make_hello()
   [200, {"Content-Type" => "text/plain"}, ["Hello from Rack!"]]
 end
 
-def make_form(env)
+def make_form()
   form_in = File.new("form.html","r")
   form_out = []
   form_in.each do |line|
@@ -29,6 +31,10 @@ def make_form(env)
     end
   end
   [200, {"Content-Type" => "text/html"}, form_out]
+end
+
+def make_table(env)
+  [200, {"Content-Type" => "text/html"}, File.new("list.html","r")]
 end
 
 def make_404()
