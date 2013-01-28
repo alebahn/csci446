@@ -1,7 +1,6 @@
 require 'rack'
 
 hello_world = Proc.new do |env|
-  puts env
   case env["REQUEST_PATH"]
   when "/"
     make_hello()
@@ -34,7 +33,25 @@ def make_form()
 end
 
 def make_table(env)
-  [200, {"Content-Type" => "text/html"}, File.new("list.html","r")]
+  arguments = parse_query_string(env["QUERY_STRING"])
+  sort_by = arguments["sort_by"].to_i-1
+  sort_name = ["Rank", "Name", "Year"][sort_by]
+
+  list_in = File.new("list.html","r")
+  list_out = []
+  list_in.each do |line|
+    unless line.chomp == "<?ruby?>"
+      list_out << line
+    else
+      line_end = line.match($/)[0]
+      list_out << "<p>Sorted by #{sort_name}<p/>" << line_end
+    end
+  end
+  [200, {"Content-Type" => "text/html"}, list_out]
+end
+
+def parse_query_string(string)
+  Hash[string.split("&").collect { |element| element.split("=") }]
 end
 
 def make_404()
