@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+        <title>The form</title>
+        <!--<link rel="stylesheet" href="style.css">-->
+    </head>
+    <body>
+        <h1>Rolling Stone's Top 100 Albums of All time</h1>
+        <form action="list" method="GET">
+            <label for="sort_by">Sorty By</label>
+            <select name="sort_by" id="sort_by">
+                <option value="1">Rank (default)</option>
+                <option value="2">Name</option>
+                <option value="3">Year</option>
+            </select>
+            <label for="highlight">Select a Rank to Highlight</label>
+            <select name="highlight" id="highlight">
+            </select>
+            <input type="submit" value="Display List"/>
+        </form>
+    </body>
+</html>
