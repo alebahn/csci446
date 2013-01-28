@@ -36,6 +36,12 @@ def make_table(env)
   arguments = parse_query_string(env["QUERY_STRING"])
   sort_by = arguments["sort_by"].to_i-1
   sort_name = ["Rank", "Name", "Year"][sort_by]
+  highlight = arguments["highlight"].to_i
+
+  list_file = File.new("top_100_albums.txt","r")
+  list = list_file.each_with_index.collect { |line, index| line.chomp.split(", ").unshift(index+1) }
+
+  list.sort! { |a,b| a[sort_by]<=>b[sort_by] }
 
   list_in = File.new("list.html","r")
   list_out = []
@@ -44,7 +50,16 @@ def make_table(env)
       list_out << line
     else
       line_end = line.match($/)[0]
-      list_out << "<p>Sorted by #{sort_name}<p/>" << line_end
+      list_out << "<p>Sorted by #{sort_name}</p>" << line_end
+
+      list_out << "<table>" << line_end
+      list.each do |row|
+        list_out << (row[0]==highlight ? '<tr class="hightlight">' : "<tr>")
+        row.each { |value| list_out << "<td>#{value}</td>" }
+        list_out << "</tr>" << line_end
+      end
+      list_out << "</table>" << line_end
+
     end
   end
   [200, {"Content-Type" => "text/html"}, list_out]
