@@ -9,7 +9,7 @@
     </head>
     <body>
         <h1>Rolling Stone's Top 100 Albums of All time</h1>
-        <p>Sorted by <%= sort_name %></p>
+        <p>Sorted by <%= sort_name.capitalize %></p>
         <table>
 %          list.each do |row|
             <tr<%= row[0]==highlight ? ' class="highlight"' : '' %>>

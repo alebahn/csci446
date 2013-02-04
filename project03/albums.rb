@@ -23,14 +23,12 @@ def make_hello()
 end
 
 def make_form()
-  puts binding
   form_out = [ERB.new(File.read("form.erb"), nil, '%').result(binding)]
   [200, {"Content-Type" => "text/html"}, form_out]
 end
 
 def make_table(request)
-  sort_by = request["sort_by"].to_i-1
-  sort_name = ["rank", "title", "year"][sort_by]
+  sort_name = ["rank", "title", "year"][request["sort_by"].to_i-1]
   highlight = request["highlight"].to_i
   list = get_sorted_list sort_name
   list_out = [ERB.new(File.read("list.erb"), nil, '%').result(binding)]
