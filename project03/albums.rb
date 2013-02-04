@@ -1,4 +1,5 @@
 require 'rack'
+require 'erb'
 
 hello_world = Proc.new do |env|
   request = Rack::Request.new(env)
@@ -21,15 +22,8 @@ def make_hello()
 end
 
 def make_form()
-  form_in = File.new("form.html","r")
-  form_out = []
-  form_in.each do |line|
-    unless line.include? '#'
-      form_out << line
-    else
-      (1..100).each { |num| form_out << line.gsub(/#/, num.to_s) }
-    end
-  end
+  puts binding
+  form_out = [ERB.new(File.read("form.erb")).result(binding)]
   [200, {"Content-Type" => "text/html"}, form_out]
 end
 
