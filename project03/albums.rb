@@ -58,24 +58,24 @@ end
 
 def get_table_html(sort_name, highlight, list)
   list_in = File.new("list.html","r")
-  list_out = []
-  list_in.each do |line|
-    unless line.chomp == "<?ruby?>"
-      list_out << line
-    else
-      line_end = line.match($/)[0]
-      list_out << "<p>Sorted by #{sort_name}</p>" << line_end
+  list_out = [].tap do |list_out|
+    list_in.each do |line|
+      unless line.chomp == "<?ruby?>"
+        list_out << line
+      else
+        line_end = line.match($/)[0]
+        list_out << "<p>Sorted by #{sort_name}</p>" << line_end
 
-      list_out << "<table>" << line_end
-      list.each do |row|
-        list_out << (row[0]==highlight ? '<tr class="highlight">' : "<tr>")
-        row.each { |value| list_out << "<td>#{value}</td>" }
-        list_out << "</tr>" << line_end
+        list_out << "<table>" << line_end
+        list.each do |row|
+          list_out << (row[0]==highlight ? '<tr class="highlight">' : "<tr>")
+          row.each { |value| list_out << "<td>#{value}</td>" }
+          list_out << "</tr>" << line_end
+        end
+        list_out << "</table>" << line_end
       end
-      list_out << "</table>" << line_end
     end
   end
-  list_out
 end
 
 Rack::Handler::WEBrick.run hello_world, :Port => 8080
