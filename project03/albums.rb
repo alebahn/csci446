@@ -32,7 +32,7 @@ def make_table(request)
   sort_name = ["Rank", "Name", "Year"][sort_by]
   highlight = request["highlight"].to_i
   list = get_sorted_list sort_by
-  list_out = [ERB.new(File.read("list.erb")).result(binding)]
+  list_out = [ERB.new(File.read("list.erb"), nil, '>').result(binding)]
   [200, {"Content-Type" => "text/html"}, list_out]
 end
 
