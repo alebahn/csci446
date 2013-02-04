@@ -1,13 +1,14 @@
 require 'rack'
 
 hello_world = Proc.new do |env|
-  case env["REQUEST_PATH"]
+  request = Rack::Request.new(env)
+  case request.path
   when "/"
     make_hello
   when "/form"
     make_form
   when "/list"
-    make_table(env)
+    make_table(request)
   when "/style.css"
     get_css
   else
@@ -32,11 +33,10 @@ def make_form()
   [200, {"Content-Type" => "text/html"}, form_out]
 end
 
-def make_table(env)
-  arguments = parse_query_string(env["QUERY_STRING"])
-  sort_by = arguments["sort_by"].to_i-1
+def make_table(request)
+  sort_by = request["sort_by"].to_i-1
   sort_name = ["Rank", "Name", "Year"][sort_by]
-  highlight = arguments["highlight"].to_i
+  highlight = request["highlight"].to_i
 
   list_file = File.new("top_100_albums.txt","r")
   list = list_file.each_with_index.collect { |line, index| line.chomp.split(", ").unshift(index+1) }
@@ -63,10 +63,6 @@ def make_table(env)
     end
   end
   [200, {"Content-Type" => "text/html"}, list_out]
-end
-
-def parse_query_string(string)
-  Hash[string.split("&").collect { |element| element.split("=") }]
 end
 
 def get_css()
