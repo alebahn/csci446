@@ -23,7 +23,7 @@ end
 
 def make_form()
   puts binding
-  form_out = [ERB.new(File.read("form.erb")).result(binding)]
+  form_out = [ERB.new(File.read("form.erb"), nil, '%').result(binding)]
   [200, {"Content-Type" => "text/html"}, form_out]
 end
 
