@@ -11,13 +11,13 @@
         <h1>Rolling Stone's Top 100 Albums of All time</h1>
         <p>Sorted by <%= sort_name %></p>
         <table>
-<%          list.each do |row| %>
+%          list.each do |row|
             <tr<%= row[0]==highlight ? ' class="highlight"' : '' %>>
-<%              row.each do |value| %>
+%               row.each do |value|
                 <td><%= value %></td>
-<%              end %>
+%               end
             </tr>
-<%          end %>
+%           end
         </table>
     </body>
 </html>
