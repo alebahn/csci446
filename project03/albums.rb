@@ -37,11 +37,7 @@ def make_table(request)
   sort_by = request["sort_by"].to_i-1
   sort_name = ["Rank", "Name", "Year"][sort_by]
   highlight = request["highlight"].to_i
-
-  list_file = File.new("top_100_albums.txt","r")
-  list = list_file.each_with_index.collect { |line, index| line.chomp.split(", ").unshift(index+1) }
-
-  list.sort! { |a,b| a[sort_by]<=>b[sort_by] }
+  list = get_sorted_list sort_by
 
   list_in = File.new("list.html","r")
   list_out = []
@@ -59,7 +55,6 @@ def make_table(request)
         list_out << "</tr>" << line_end
       end
       list_out << "</table>" << line_end
-
     end
   end
   [200, {"Content-Type" => "text/html"}, list_out]
@@ -71,6 +66,15 @@ end
 
 def make_404()
   [404, {"Content-Type" => "text/plain"}, ["Page Not Found."]]
+end
+
+def get_sorted_list(sort_by)
+  list_file = File.new("top_100_albums.txt","r")
+  list = list_file.each_with_index.collect { |line, index| line.chomp.split(", ").unshift(index+1) }
+  list.sort { |a,b| a[sort_by]<=>b[sort_by] }
+end
+
+def get_table_html(sort_name, highlight, list)
 end
 
 Rack::Handler::WEBrick.run hello_world, :Port => 8080
