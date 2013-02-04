@@ -9,6 +9,15 @@
     </head>
     <body>
         <h1>Rolling Stone's Top 100 Albums of All time</h1>
-<?ruby?>
+        <p>Sorted by <%= sort_name %></p>
+        <table>
+            <% list.each do |row| %>
+                <tr>
+                    <% row.each do |value| %>
+                        <td> <%= value %></td>
+                    <% end %>
+                </tr>
+            <% end %>
+        </table>
     </body>
 </html>
