@@ -12,7 +12,7 @@
         <p>Sorted by <%= sort_name %></p>
         <table>
             <% list.each do |row| %>
-                <tr>
+                <tr<%= row[0]==highlight ? ' class="highlight"' : '' %>>
                     <% row.each do |value| %>
                         <td> <%= value %></td>
                     <% end %>
