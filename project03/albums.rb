@@ -3,15 +3,15 @@ require 'rack'
 hello_world = Proc.new do |env|
   case env["REQUEST_PATH"]
   when "/"
-    make_hello()
+    make_hello
   when "/form"
-    make_form()
+    make_form
   when "/list"
     make_table(env)
   when "/style.css"
-    get_css()
+    get_css
   else
-    make_404()
+    make_404
   end
 end
 
