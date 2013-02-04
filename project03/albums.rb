@@ -1,5 +1,6 @@
 require 'rack'
 require 'erb'
+require 'sqlite3'
 
 hello_world = Proc.new do |env|
   request = Rack::Request.new(env)
@@ -29,9 +30,9 @@ end
 
 def make_table(request)
   sort_by = request["sort_by"].to_i-1
-  sort_name = ["Rank", "Name", "Year"][sort_by]
+  sort_name = ["rank", "title", "year"][sort_by]
   highlight = request["highlight"].to_i
-  list = get_sorted_list sort_by
+  list = get_sorted_list sort_name
   list_out = [ERB.new(File.read("list.erb"), nil, '%').result(binding)]
   [200, {"Content-Type" => "text/html"}, list_out]
 end
@@ -44,10 +45,9 @@ def make_404()
   [404, {"Content-Type" => "text/plain"}, ["Page Not Found."]]
 end
 
-def get_sorted_list(sort_by)
-  list_file = File.new("top_100_albums.txt","r")
-  list = list_file.each_with_index.collect { |line, index| line.chomp.split(", ").unshift(index+1) }
-  list.sort { |a,b| a[sort_by]<=>b[sort_by] }
+def get_sorted_list(sort_name)
+  db = SQLite3::Database.new("albums.sqlite3.db");
+  db.execute("SELECT rank, title, year FROM albums ORDER by #{sort_name}");
 end
 
 Rack::Handler::WEBrick.run hello_world, :Port => 8080
